@@ -1,4 +1,4 @@
-var connection = require("../config/connection.js");
+var connection = require("./connection.js");
 
 
 
@@ -44,7 +44,7 @@ var orm = {
       cb(result);
     });
   },
-  insertOne: function(table, cols, vals, cb) {
+  create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";

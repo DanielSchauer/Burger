@@ -7,21 +7,24 @@ var burger = require("../models/burger.js");
 
 
 router.get("/", function(req, res) {
+    res.redirect("/burgers")
+});
+
+router.get("/burgers", function(req, res) {
   burger.selectAll(function(data) {
-    var hbsObject = {
-      burgers: data
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+    console.log(data);
+    // var hbsObject = {
+    //   burgers: data
+    // };
+    // console.log(hbsObject);
+    // res.render("index", hbsObject);
+    res.render("index");
   });
 });
 
-router.post("/api/burgers", function(req, res) {
-  burger.create([
-    "name", "devorered"
-  ], [
-    req.body.name, req.body.devorered
-  ], function(result) {
+router.post("/burgers/create", function(req, res) {
+  burger.create(
+    req.body.name, req.body.devorered, function(result) {
     res.json({ id: result.insertId });
   });
 });
