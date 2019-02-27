@@ -8,7 +8,7 @@ var burger = {
     });
   },
   
-  create: function(name, cb) {
+  create: function(toppings, cb) {
     orm.create('burgers', [
       'toppings', 'devoured'],[toppings, false], cb)
   },

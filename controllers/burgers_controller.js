@@ -18,14 +18,15 @@ router.get("/burgers", function(req, res) {
     // };
     // console.log(hbsObject);
     // res.render("index", hbsObject);
-    res.render("index");
+    res.render("index", {burger:data});
   });
 });
 
 router.post("/burgers/create", function(req, res) {
   burger.create(
-    req.body.name, req.body.devorered, function(result) {
-    res.json({ id: result.insertId });
+    req.body.toppings, function(result) {
+      console.log(result);
+      res.redirect('/');
   });
 });
 
